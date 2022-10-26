@@ -88,52 +88,52 @@ def pickFight():
     if(choice == 'Slime'):
         print(choice,' Selected')
         monSelected = 0
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Blorb'):
         print(choice,' Selected')
         monSelected = 1
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Runner'):
         print(choice,' Selected')
         monSelected = 2
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Vulkar'):
         print(choice,' Selected')
         monSelected = 3
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Grundle'):
         print(choice,' Selected')
         monSelected = 4
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Pyro'):
         print(choice,' Selected')
         monSelected = 5
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Hatchling'):
         print(choice,' Selected')
         monSelected = 6
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Spider'):
         print(choice,' Selected')
         monSelected = 7
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Mud Golem'):
         print(choice,' Selected')
         monSelected = 8
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Bony Boi'):
         print(choice,' Selected')
         monSelected = 9
-        combat(monSelected)
+        combat0(monSelected)
     elif(choice == 'Random'):
         print(choice,' Selected')
         monSelected = random.randint(0,9)
-        combat(monSelected)
+        combat0(monSelected)
     else:
         print('I don\'t know what you mean... Doing Random instead')
         print(choice,' Selected')
         monSelected = random.randint(0,9)
-        combat(monSelected)
+        combat0(monSelected)
     
 #Function to show the mob stats
 def showMonStats(monStats):
@@ -142,40 +142,49 @@ def showMonStats(monStats):
     print(monStats[0],'| Hp:',monStats[1],' Damage:',monStats[2],' Defense:',monStats[3],' Speed:',monStats[4],' Accuracy:',monStats[5])
 
 #A transition function to choose what move to take
-def combat(monSelected):
-    #now we will make a new group for the monster stats
+def combat0(monSelected):
     monStats = [monList[monSelected],monHp[monSelected],monDam[monSelected],monDef[monSelected],monSpd[monSelected],monAcc[monSelected]]
+    playerStats = [playerHp,playerDam,playerDef,playerSpd,playerAcc]
+    combat(monStats,playerStats)
+
+def combat(monStats,playerStats):
+    #now we will make a new group for the monster stats
     showMonStats(monStats)
     print(' ')
-    initiative = random.randint(0,3)
-    if(initiative == 1) | (initiative == 2) | (initiative == 3):
+    initiative = random.randint(0,1)
+    if(initiative == 1):
         choice = input('So what do you want to do? ')
         if(choice == 'Attack'):
             print('Attacking')
-            playerAttack(monStats)
+            playerAttack(monStats,playerStats)
         elif(choice == 'Run'):
             print('Trying to run away')
         elif(choice == 'Redo'):
             pickStats()
             pickFight()
     else:
-        print('The ',monStats[0],' ambushes you!')
-        monAttack(monStats)
+        print('The ',monStats[0],' attacks you!')
+        monAttack(monStats,playerStats)
 
 #when the mob attacks
-def monAttack(monStats):
+def monAttack(monStats,playerStats):
     print(' ')
     print('The',monStats[0],'Attacks!')
-    trueDamage = (monStats[2] - playerDef)
-    playerHp -= trueDamage
+    trueDamage = (monStats[2] - playerStats[2])
+    if(trueDamage < 1):
+        trueDamage = 1
+    playerStats[0] -= trueDamage
+    combat(monStats,playerStats)
     
 #when the player attacks
-def playerAttack(monStats):
+def playerAttack(monStats,playerStats):
     print('')
     print('You attack the ',monStats[0])
-    trueDamage = (playerDam - monStats[3])
+    trueDamage = (playerStats[1] - monStats[3])
+    if(trueDamage < 1):
+        trueDamage = 1
     monStats[1] -= trueDamage
-    combat(monStats)
+    combat(monStats,playerStats)
     
     
     
