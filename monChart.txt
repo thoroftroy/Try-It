@@ -1,80 +1,69 @@
 This is just a chart of the monsters that I will use as a referance.
 
 Type - the name of the monster
-Health - How many hitpoints the monster has
-Defense - this is calculated with this dpamFin={pdam-mdef  d>=1} pdamFin is the actual damage delt, pdam is the damage the attacker deals as a base, mdef is the recievers defense, the damage cannot go below 0
-Speed - this is how many times a monster attacks per turn, also used for ambushes/turn order
-Accuracy - the chance for the mosnters to hit on each attack | If this goes beyond 100 it will hit more than once per attack
+Hp - How many hitpoints the monster has
+Def - this is calculated with this dpamFin={pdam-mdef  d>=1} pdamFin is the actual damage delt, pdam is the damage the attacker deals as a base, mdef is the recievers defense, the damage cannot go below 0
+Spd - this is how many times a monster attacks per turn, also used for ambushes/turn order
+AtSpd - a monsters initative or chance to ambush - 5 is base and normal, 50% chance to attack first
 Xp - the amount of Xp dropped by a monster
-Coin - the number of coins dropped by a monster
+HitCh - its chance to hit you
+dodCh - its chance to dodge you
+Rarity - this is the weight of the monster spawn, the higher it is the more common | Ultra Rare(1), Super Rare(2), Sorta-Rare(3), Rare(4), Uncommon(5), Common(6), Everywhere(7) Only 1(0)
+MovVal - 0:cannot move, 1:standard waking, 2:swiming, 3:flying, 4:walk/swim, 5:walk/fly, 6:swim/fly, 7:climing
+EffId - (this is an effect that is delt by a monster) 0:none, 1:bleeding, 2:poison, 3:fire, 4:suffocating, 5:confused, 6:necrosis, 
+EffCh - the chance for the effect to apply
+spAbil - special abilities 0:none,1:swarm,2:resist,3:spawn
+spAbil Cont. - 	1:x-y will swarm with a random number in that range, 2 halfs all damage taken, 3:id.x-y spawns the monster of that Id in x-y interval
 Floor - This is the floor of the dungeon that the monsters can spawn on
-Floor List - Garden(1-10)    Stoneland(11-20)    Spider Nest(21-30)    Volcano(31-40)    Pumkin Patch(41-50)    Chicken Level(???)
-Rarity - this is the weight of the monster spawn, the higher it is the more common | Ultra Rare(0), Super Rare(1), Sorta-Rare(2), Rare(3), Uncommon(4), Common(5), Only 1(-1)
 
+Floor List --- 
+Garden(1-10), Cave(11-20), Spider Nest(21-30), Volcanic Caves(31-40), Underwater Caves(41,50), 
+Tunnel(51,60), Pumkin Patch(61-70), Space(71,80), Dimention Z(81,90), Chicken Level(???), 	
 
-Type    |      Health  |  Damage  |  Defense  |  Speed   |   Accuracy   |   Xp    |   Coin    |		Floor		|	Rarity	|
------------------------------------------------------------------------------------------------------------------------------------------
-{Common Monsters}
-Slime           5           1-3         0          1            85%         1-3       0-4		1-50			5
-Blorb           3           0-1         0          0-1          70%         1-2       0-2		1-10			5
-Runner          10          1-6         1          2-3          40%         2-4       2-3		4-20			4
-Vulkar          6           6-9         2          7-10         20%         5-6       1-3		21-30			3
-Grundle         50          2-8         16         1            60%         8-10      2-6		11-20 , 31-40		3
-Pyro            15          20-40       -2         1            250%        5-7       5-6		11-20 , 31-40		2
-Hatchling       1           1-2         -10        1            80%         0-1       0			21-30 , 41-50		5
-Spider		15	    2-6		3	   1-2		85%	    3-5	      1-4		1-20  , 41-50		5
-Mud Golem	80	    10-20	5	   1		75%	    10-15     4-7		1-10			3
-Bony Boi	15	    2-7		4	   1-2		68%	    2-4	      4-6		1-30			4
+		   		
+Monster Name -  id,	Hp,	Dam	Def	AtSpd	Spd	HitCh	dodCh	Xp	Rar	MovVal	EffId	EffCh	spAbil
+{Garden}
+Green Slime	0,	5,	1,	0,	4,	5,	85,	4,	1,	6,	1,	0,	0,	0
+Blorb		1,	10,	2,	0,	5,	7,	95,	10,	2,	5,	4,	0,	0,	0
+Dryad		2,	25,	4,	2,	6,	10,	75,	12,	5,	4,	1,	0,	0,	0
+Tree Ent	3,	100,	15,	10,	1,	3,	65,	2,	10,	4,	1,	0,	0,	0
+Rock		4,	25,	0,	0,	0,	0,	0,	0,	8,	5,	0,	0,	0,	2
+Bunny		5,	1,	0,	0,	0,	5,	0,	50,	10,	6,	1,	0,	0,	0
+Blue Slime	6,	3,	5,	1,	7,	7,	75,	14,	5,	5,	4,	0,	0,	0
+Chicken		7,	2,	0,	0,	0,	5,	98,	10,	1,	3,	1,	0,	0,	0
+Awakened Bunny	8,	10,	10,	10,	10,	10,	20,	75,	65,	1,	1,	1,	25,	0
+Awakened Chick	9,	20,	20,	20,	25,	20,	10,	95,	100,	1,	5,	1,	60,	0
 
-{Uncommon Monsters}
-Pumkin Bomber   25          30-50       0          2            400%        10-20     4-10		41-50			2
-Clay Golem	140	    20-40	10	   1		80%	    20-30     7-10		6-20  , 41-50		2
-Mush Man	50	    40-45	5	   4		80%	    30-40     10-20		1-10  , 41-50		2
+{Cave}
+Grey Slime	10,	5,	2,	1,	8,	10,	75,	8,	2,	6,	1,	0,	0,	0
+Bony Boi	11,	50,	8,	4,	12,	20,	55,	25,	10,	4,	1,	6,	10,	0
+Pile of Bones	12,	75,	0,	0,	0,	0,	98,	0,	5,	3,	0,	0,	0,	0
+Cave Bat	13,	10,	20,	1,	30,	30,	80,	35,	40,	4,	3,	1,	50,	1:2-5
+Leach		14,	10,	1,	0,	10,	12,	75,	20,	10,	6,	4,	1,	20,	0
+Big Boned	15,	100,	20,	50,	2,	6,	60,	50,	60,	2,	1,	6,	20,	2
+Golden Bone	16,	200,	75,	0,	8,	10,	70,	10,	150,	1,	1,	6,	100,	2
 
-{Rare Monsters}
-Pumkin Master   75          10-40       10         4            60%         50-100    20-40		45-50			1
-Rock		200	    0		900	   0		0%	    0	      0-100		11-20 , 31-40		1		
-Golden Golem 	200	    90-100	50	   2		55%	    40-60     100-400		11-20 , 31-40		1
+{Spider Nest}
+Hatchling	17,	1,	1,	1,	20,	20,	90,	15,	1,	7,	7,	0,	0,	1:5-10	
+Spider		18,	10,	4,	1,	25,	50,	75,	30,	10,	6,	7,	2,	20,	0
+Large Spider	19,	20,	8,	2,	50,	100,	90,	25,	35,	4,	7,	2,	25,	0
+Widow		20,	100,	30,	10,	40,	75,	80,	20,	70,	3,	7,	6,	30,	0
+Wolf Spider	21,	80,	40,	5,	40,	60,	70,	10,	65,	3,	7,	1,	10,	0
+Spider Mother	22,	450,	50,	20,	100,	50,	70,	5,	200,	2,	7,	2,	50,	3:17.4-8
+Queen Spider	23,	600, 	60,	50,	200,	60,	80,	0,	400,	1,	7,	6,	80,	3:18.2-8
+Flea Spider	24,	20,	3,	1,	20,	10,	50,	10,	15,	6,	7,	0,	0,	0
+Maggot Spider	25,	25,	10,	10,	10,	20,	70,	20,	35,	5,	7,	2,	10,	0
+Black Tooth	26,	90,	500,	0,	400,	5,	15,	50,	300,	1,	7,	6,	100,	0
 
-{Legendary Monsters}
-Pumking         100         20-70       25         10           86%         100-200   40-70		46-50			0
-Slime Hand      5000        0-500       9999       1-20         100%        9999      0-999		1-20			0
-Chicken		1	    0		0	   0		0%	    0	      0			1-10  , ???		0
-Arachnade	20	    100		0	   35		30%	    100-400   70-100		21-30			0
-Golden Rock	800	    0		9999	   0		0%	    0	      100-900		11-20 , 31-40		0
-
-{Bosses}
-The Gardener	100	    40-70	10	   3		84%	    100       10-50		10			-1
-Black Rock	200	    90-100	80	   1		99%	    200	      50-75		20			-1
-Spider Queen	350	    70-100	30	   4		76%	    400	      75-100		30			-1
-Pyro King	400	    300-340     0          10           25%	    500	      100-200		40			-1
-Pumpkin Lord    550         100-200     40         5            98%         600       200-300		50			-1
-Chicken God	0-9999999   0-9999999   0-99999    0-999999     100%        9999      0-99999		???			-1
-
-
-MONSTER DROPS
-Drop		|Usage				|	Rarity		|	Monster		|
--------------------------------------------------------------------------------------------------
-{Conumables}
-Bomb		Consumable for +20 attack in combat	3			Pyro,Pumkin Bomber
-Shrooms		Pacifies monsters (consumable)		1			Mush Man
-
-{Materials}
-Gel		Can be used as fuel for fire		5			Slime,Blorb,Slimy Hand
-String		Tie things down				5			Spider,Hatchling,Arachnade
-Dirt		...Fill holes I suppose?		1			Mud Golem
-Feather		Gather 100 to go to the chicken level	0			Chicken,Chicken God
-Gold		Worth 100 coin				3			Golden Rock, Golden Golem
-
-{Equipables}
-Bone		Used as a wepon(1-4 damage)		5			Bony Boi
-Running Pants	Equip for +1 speed			3			Runner
-Claw		Equip for +3 speed			2			Vulkar
-Grundle Tooth	Equip for +6 defence			2			Grundle
-
-{Boss Items}
-Gravdigger	Equip for +10 attack			-1			The Gardener
-
+{Volcanic Caves}
+Imp		27,	80,	20,	0,	80,	100,	90,	10,	20,	6,	5,	3,	10,	0
+Ashen Soldier	28,	100,	30,	20,	90,	100,	90,	10,	30,	6,	1,	3,	20,	2
+Devil		29,	140,	50,	5,	65,	100,	90,	10,	40,	5,	3,	3,	30,	0
+Lava Snail	30,	500,	5,	100,	10,	20,	90,	0,	20,	3,	1,	3,	40,	2
+Firefly		31,	20,	40,	0,	100,	200,	60,	10,	10,	2,	3,	3,	50,	1:2-5
+Burning Hands	32,	75,	50,	15,	60,	100,	75,	10,	50,	3,	3,	3,	60,	0
+Nugget		33,	20,	20,	10,	40,	70,	100,	10,	90,	2,	5,	3,	70,	0
+Lucy		34,	1000,	100,	10,	500,	1000,	100,	60,	1000,	1,	5,	3,	80,	3:28.3-10
 
 
 
